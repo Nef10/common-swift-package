@@ -13,6 +13,15 @@ group:
         deleteOrphaned: true
     repos: |
       Nef10/SwiftBeanCountImporter
+      Nef10/SwiftBeanCountParser
+      Nef10/SwiftBeanCountModel
+      Nef10/FileSelectorView
+      Nef10/SwiftBeanCountWealthsimpleMapper
+      Nef10/WealthsimpleDownloader
+      Nef10/SwiftBeanCountSheetSync
+      Nef10/GoogleAuthentication
+      Nef10/RogersBankDownloader
+      Nef10/SwiftBeanCountRogersBankMapper
 
   # Other repos just to sync the license
   - files:
