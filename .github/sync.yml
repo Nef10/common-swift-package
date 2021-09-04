@@ -1,13 +1,24 @@
 group:
-  repos: |
-    Nef10/SwiftBeanCountImporter
-  files:
-    - source: .gitignore
-      dest: .gitignore
-    - source: .swiftlint.yml
-      dest: .swiftlint.yml
-    - source: LICENSE
-      dest: LICENSE
-    - source: github/
-      dest: .github/
-      deleteOrphaned: true
+
+  # Swift packages
+  - files:
+      - source: .gitignore
+        dest: .gitignore
+      - source: .swiftlint.yml
+        dest: .swiftlint.yml
+      - source: LICENSE
+        dest: LICENSE
+      - source: github/
+        dest: .github/
+        deleteOrphaned: true
+    repos: |
+      Nef10/SwiftBeanCountImporter
+
+  # Other repos just to sync the license
+  - files:
+      - source: LICENSE
+        dest: LICENSE
+        deleteOrphaned: true
+    repos: |
+      Nef10/SwiftBeanCount
+      Nef10/swiftlint-config
