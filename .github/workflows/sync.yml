@@ -1,0 +1,34 @@
+name: Sync Files
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '19 10 * * 5' # Run every Friday at 10:19 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1.4.0
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Run GitHub File Sync
+        uses: BetaHuhn/repo-file-sync-action@v1
+        with:
+          GH_INSTALLATION_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GIT_EMAIL: Nef10@users.noreply.github.com
+          GIT_USERNAME: "Nef10 File Sync Bot"
+          ORIGINAL_MESSAGE: true
+          COMMIT_EACH_FILE: false
+          ASSIGNEES: Nef10
+          PR_LABELS: |
+            sync
+            maintenance
