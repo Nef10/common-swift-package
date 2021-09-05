@@ -21,7 +21,7 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Run GitHub File Sync
-        uses: BetaHuhn/repo-file-sync-action@v1
+        uses: Nef10/repo-file-sync-action@exclude-delete
         with:
           GH_INSTALLATION_TOKEN: ${{ steps.generate_token.outputs.token }}
           GIT_EMAIL: Nef10@users.noreply.github.com
