@@ -25,6 +25,24 @@ group:
       Nef10/RogersBankDownloader
       Nef10/SwiftBeanCountRogersBankMapper
 
+  # Swift CLI, excludes the documentation workflow
+  - files:
+      - source: .gitignore
+        dest: .gitignore
+      - source: .swiftlint.yml
+        dest: .swiftlint.yml
+      - source: LICENSE
+        dest: LICENSE
+      - source: github/
+        dest: .github/
+        deleteOrphaned: true
+        exclude: |
+          workflows/docs.yml
+          minimum_coverage.txt
+    repos: |
+      Nef10/SwiftBeanCountCLI
+      Nef10/swift-dependency-updater
+
   # Other repos just to sync the license
   - files:
       - source: LICENSE
