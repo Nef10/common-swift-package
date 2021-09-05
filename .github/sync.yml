@@ -11,6 +11,8 @@ group:
       - source: github/
         dest: .github/
         deleteOrphaned: true
+        exclude: |
+          minimum_coverage.txt
     repos: |
       Nef10/SwiftBeanCountImporter
       Nef10/SwiftBeanCountParser
