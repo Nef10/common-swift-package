@@ -25,6 +25,7 @@ group:
       Nef10/GoogleAuthentication
       Nef10/RogersBankDownloader
       Nef10/SwiftBeanCountRogersBankMapper
+      Nef10/SwiftBeanCountParserUtils
 
   # Swift CLI, excludes the documentation workflow
   - files:
