@@ -50,7 +50,6 @@ group:
   - files:
       - source: LICENSE
         dest: LICENSE
-        deleteOrphaned: true
     repos: |
       Nef10/SwiftBeanCount
       Nef10/swiftlint-config
