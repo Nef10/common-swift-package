@@ -24,8 +24,8 @@ jobs:
         uses: BetaHuhn/repo-file-sync-action@v1
         with:
           GH_INSTALLATION_TOKEN: ${{ steps.generate_token.outputs.token }}
-          GIT_EMAIL: Nef10@users.noreply.github.com
-          GIT_USERNAME: "Nef10 File Sync Bot"
+          GIT_EMAIL: 89714990+file-sync-app[bot]@users.noreply.github.com
+          GIT_USERNAME: "file-sync-app[bot]"
           ORIGINAL_MESSAGE: true
           COMMIT_EACH_FILE: false
           ASSIGNEES: Nef10
