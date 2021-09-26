@@ -21,12 +21,13 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Run GitHub File Sync
-        uses: BetaHuhn/repo-file-sync-action@v1
+        uses: Nef10/repo-file-sync-action@prtitle
         with:
           GH_INSTALLATION_TOKEN: ${{ steps.generate_token.outputs.token }}
           GIT_EMAIL: 89714990+file-sync-app[bot]@users.noreply.github.com
           GIT_USERNAME: "file-sync-app[bot]"
           ORIGINAL_MESSAGE: true
+          COMMIT_AS_PR_TITLE: true
           COMMIT_EACH_FILE: false
           ASSIGNEES: Nef10
           PR_LABELS: |
