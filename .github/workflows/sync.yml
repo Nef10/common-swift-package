@@ -21,7 +21,8 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Run GitHub File Sync
-        uses: Nef10/repo-file-sync-action@prtitle
+        id: file_sync
+        uses: BetaHuhn/repo-file-sync-action@v1
         with:
           GH_INSTALLATION_TOKEN: ${{ steps.generate_token.outputs.token }}
           GIT_EMAIL: 89714990+file-sync-app[bot]@users.noreply.github.com
@@ -33,3 +34,56 @@ jobs:
           PR_LABELS: |
             sync
             maintenance
+      - name: Enable automerge on PRs
+        uses: actions/github-script@v5
+        env:
+          PRURLS: ${{ steps.file_sync.outputs.pull_request_urls }}
+        with:
+          github-token: ${{ steps.generate_token.outputs.token }}
+          script: |
+            let failed = false;
+            const { PRURLS } = process.env;
+            const prs = JSON.parse(PRURLS);
+            const idQuery = `query FindPullRequestId($owner: String!, $repoName: String!, $pullRequestNumber: Int!) {
+              repository(owner: $owner, name: $repoName) {
+                pullRequest(number: $pullRequestNumber) {
+                  id
+                }
+              }
+            }`;
+            const mergeQuery = `mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+              enablePullRequestAutoMerge(input: {
+                pullRequestId: $pullRequestId,
+                mergeMethod: $mergeMethod
+              }) {
+                clientMutationId
+                pullRequest {
+                  id
+                  state
+                }
+              }
+            }`;
+            
+            for (const pr of prs) {
+              try {
+                const urlParts = pr.replace('https://github.com/', '').split('/');
+                const idVariables = {
+                  owner: urlParts[0],
+                  repoName: urlParts[1],
+                  pullRequestNumber: parseInt(urlParts[3])
+                };
+                const idResult = await github.graphql(idQuery, idVariables);
+                const mergeVariables = {
+                  pullRequestId: idResult.repository.pullRequest.id,
+                  mergeMethod: 'REBASE'
+                };
+                const mergeResult = await github.graphql(mergeQuery, mergeVariables);
+                core.info(`Enabled automerge for ${pr}.`);
+              } catch(err) {
+                 core.error(`Error enabling automerge for ${pr}: ${err}`);
+                 failed = true;
+              }
+            }
+            if (failed) {
+              core.setFailed('Automerging could not be enabled on some PRs!');
+            }
