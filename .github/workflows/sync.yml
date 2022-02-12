@@ -35,7 +35,7 @@ jobs:
             sync
             maintenance
       - name: Enable automerge on PRs
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         env:
           PRURLS: ${{ steps.file_sync.outputs.pull_request_urls }}
         with:
