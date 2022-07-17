@@ -13,6 +13,7 @@ group:
         deleteOrphaned: true
         exclude: |
           minimum_coverage.txt
+          macos_version.txt
           macos_only
     repos: |
       Nef10/SwiftBeanCountImporter
@@ -41,6 +42,7 @@ group:
         exclude: |
           workflows/docs.yml
           minimum_coverage.txt
+          macos_version.txt
           macos_only
     repos: |
       Nef10/SwiftBeanCountCLI
