@@ -24,3 +24,4 @@ To allow these files to serve all packages there are some configuration options:
 
 * Place a `minimum_coverage.txt` file containing a single number in the `.github` folder to enforce a minimum code coverage percentage in the CI workflow
 * Place an empty `macos_only` file in the `.github` folder to disable testing the package on ubuntu, for example when using mac only frameworks
+* Place a `macos_version.txt` file containing a valid [GitHub Actions Virtual Environments label](https://github.com/actions/virtual-environments/tree/main) in the `.github` folder to run the macOS tests on a version other than `macOS-latest`
