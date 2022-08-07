@@ -27,6 +27,22 @@ group:
       Nef10/RogersBankDownloader
       Nef10/SwiftBeanCountRogersBankMapper
       Nef10/SwiftBeanCountParserUtils
+      
+  # Swift package forks (excluding license)
+  - files:
+      - source: .gitignore
+        dest: .gitignore
+      - source: .swiftlint.yml
+        dest: .swiftlint.yml
+      - source: github/
+        dest: .github/
+        deleteOrphaned: true
+        exclude: |
+          minimum_coverage.txt
+          macos_version.txt
+          macos_only
+    repos: |
+      Nef10/SwiftScraper
 
   # Swift CLI, excludes the documentation workflow
   - files:
