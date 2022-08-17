@@ -27,6 +27,7 @@ group:
       Nef10/RogersBankDownloader
       Nef10/SwiftBeanCountRogersBankMapper
       Nef10/SwiftBeanCountParserUtils
+      Nef10/TangerineDownloader
       
   # Swift package forks (excluding license)
   - files:
