@@ -51,7 +51,7 @@ jobs:
                 }
               }
             }`;
-            const mergeQuery = `mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+            const autoMergeQuery = `mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
               enablePullRequestAutoMerge(input: {
                 pullRequestId: $pullRequestId,
                 mergeMethod: $mergeMethod
@@ -63,7 +63,19 @@ jobs:
                 }
               }
             }`;
-            
+            const mergeQuery = `mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+              mergePullRequest(input: {
+                pullRequestId: $pullRequestId,
+                mergeMethod: $mergeMethod
+              }) {
+                clientMutationId
+                pullRequest {
+                  id
+                  state
+                }
+              }
+            }`;
+
             for (const pr of prs) {
               try {
                 const urlParts = pr.replace('https://github.com/', '').split('/');
@@ -77,7 +89,12 @@ jobs:
                   pullRequestId: idResult.repository.pullRequest.id,
                   mergeMethod: 'REBASE'
                 };
-                const mergeResult = await github.graphql(mergeQuery, mergeVariables);
+                try {
+                  const autoMergeResult = await github.graphql(autoMergeQuery, mergeVariables);
+                } catch(err) {
+                  console.log(`Could not enable automerge for ${pr}, will try to merge the PR directly. (Error: ${err})`);
+                  const mergeResult = await github.graphql(mergeQuery, mergeVariables);
+                }
                 core.info(`Enabled automerge for ${pr}.`);
               } catch(err) {
                  core.error(`Error enabling automerge for ${pr}: ${err}`);
