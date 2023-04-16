@@ -31,6 +31,7 @@ group:
       Nef10/SwiftBeanCountTangerineMapper
       Nef10/CompassCardDownloader
       Nef10/SwiftBeanCountCompassCardMapper
+      Nef10/SwiftBeanCountTax
       
   # Swift package forks (excluding license)
   - files:
