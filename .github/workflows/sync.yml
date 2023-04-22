@@ -24,7 +24,7 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Set dependency labels
         if: startsWith( github.event.head_commit.message, 'Bump' )
-        run: echo "labels=sync\ndependencies" >> $GITHUB_ENV
+        run: echo -e "labels=sync\ndependencies" >> $GITHUB_ENV
       - name: Run GitHub File Sync
         id: file_sync
         uses: BetaHuhn/repo-file-sync-action@v1
