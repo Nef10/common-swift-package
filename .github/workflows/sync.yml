@@ -11,8 +11,6 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    env:
-      labels: "sync\nmaintenance"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -25,6 +23,9 @@ jobs:
       - name: Set dependency labels
         if: startsWith( github.event.head_commit.message, 'Bump' )
         run: echo -e "labels=sync\ndependencies" >> $GITHUB_ENV
+      - name: Set non-dependency labels
+        if: ${{ !startsWith( github.event.head_commit.message, 'Bump' ) }}
+        run: echo -e "labels=sync\nmaintenance" >> $GITHUB_ENV
       - name: Run GitHub File Sync
         id: file_sync
         uses: BetaHuhn/repo-file-sync-action@v1
