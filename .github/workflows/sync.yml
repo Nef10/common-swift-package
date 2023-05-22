@@ -22,7 +22,7 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Set dependency labels
         if: startsWith( github.event.head_commit.message, 'Bump' )
-        run: echo -e "labels=sync\" >> $GITHUB_ENV
+        run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "labels<<$EOF" >> "$GITHUB_ENV"
           echo "sync" >> "$GITHUB_ENV"
