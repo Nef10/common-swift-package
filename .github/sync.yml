@@ -71,8 +71,6 @@ group:
 
   # Swift Apps, only sync certain workflows
   - files:
-      - source: .gitignore
-        dest: .gitignore
       - source: .swiftlint.yml
         dest: .swiftlint.yml
       - source: LICENSE
