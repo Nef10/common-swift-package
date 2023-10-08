@@ -69,6 +69,28 @@ group:
       Nef10/SwiftBeanCountCLI
       Nef10/swift-dependency-updater
 
+  # Swift Apps, only sync certain workflows
+  - files:
+      - source: .gitignore
+        dest: .gitignore
+      - source: .swiftlint.yml
+        dest: .swiftlint.yml
+      - source: LICENSE
+        dest: LICENSE
+      - source: github/labels.yml
+        dest: .github/labels.yml
+      - source: github/dependabot.yml
+        dest: .github/dependabot.yml
+      - source: github/release-drafter.yml
+        dest: .github/release-drafter.yml
+      - source: github/workflows/label-sync.yml
+        dest: .github/workflows/label-sync.yml
+      - source: github/workflows/release-drafter.yml
+        dest: .github/workflows/release-drafter.yml
+    repos: |
+      Nef10/SwiftBeanCountImporterApp
+      Nef10/SwiftBeanCountApp
+
   # Other repos just to sync the license
   - files:
       - source: LICENSE
