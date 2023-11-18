@@ -49,7 +49,7 @@ jobs:
           ASSIGNEES: Nef10
           PR_LABELS: ${{ env.labels }}
       - name: Enable automerge on PRs
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           PRURLS: ${{ steps.file_sync.outputs.pull_request_urls }}
         with:
