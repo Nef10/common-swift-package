@@ -105,10 +105,10 @@ jobs:
                 };
                 try {
                   const autoMergeResult = await github.graphql(autoMergeQuery, mergeVariables);
-                  core.info(`Enabled automerge for ${pr}.`);
+                  core.info(`Enabled automerge for ${pr}`);
                 } catch(err) {
                   const mergeResult = await github.graphql(mergeQuery, mergeVariables);
-                  core.info(`Merged ${pr}.`);
+                  core.info(`Merged ${pr}`);
                 }
               } catch(err) {
                  core.error(`Error enabling automerge / merging ${pr}: ${err}`);
