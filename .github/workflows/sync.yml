@@ -99,7 +99,7 @@ jobs:
                 const idResult = await github.graphql(idQuery, idVariables);
                 const mergeVariables = {
                   pullRequestId: idResult.repository.pullRequest.id,
-                  mergeMethod: 'REBASE'
+                  mergeMethod: 'SQUASH'
                 };
                 try {
                   const autoMergeResult = await github.graphql(autoMergeQuery, mergeVariables);
