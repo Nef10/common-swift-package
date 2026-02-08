@@ -17,23 +17,12 @@ group:
           macos_only
           copilot-instructions.md
     repos: |
-      Nef10/SwiftBeanCountImporter
-      Nef10/SwiftBeanCountParser
-      Nef10/SwiftBeanCountModel
       Nef10/FileSelectorView
-      Nef10/SwiftBeanCountWealthsimpleMapper
       Nef10/WealthsimpleDownloader
-      Nef10/SwiftBeanCountSheetSync
       Nef10/GoogleAuthentication
       Nef10/RogersBankDownloader
-      Nef10/SwiftBeanCountRogersBankMapper
-      Nef10/SwiftBeanCountParserUtils
       Nef10/TangerineDownloader
-      Nef10/SwiftBeanCountTangerineMapper
       Nef10/CompassCardDownloader
-      Nef10/SwiftBeanCountCompassCardMapper
-      Nef10/SwiftBeanCountTax
-      Nef10/SwiftBeanCountStatements
       
   # Swift package forks (excluding license)
   - files:
@@ -70,7 +59,6 @@ group:
           macos_only
           copilot-instructions.md
     repos: |
-      Nef10/SwiftBeanCountCLI
       Nef10/swift-dependency-updater
 
   # Swift Apps, only sync certain workflows
