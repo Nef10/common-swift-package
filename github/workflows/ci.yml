@@ -93,4 +93,4 @@ jobs:
           unzip swiftlint.zip -d swiftlint
           ./swiftlint/swiftlint --version
       - name: Run SwiftLint
-        run: ./swiftlint/swiftlint --strict --reporter github-actions-logging
+        run: LINUX_SOURCEKIT_LIB_PATH=$(swiftly use --print-location)/usr/lib ./swiftlint/swiftlint --strict --reporter github-actions-logging
