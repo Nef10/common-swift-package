@@ -42,7 +42,7 @@ group:
           copilot-instructions.md
           workflows/ci.yml
           workflows/coverage-comment.yml
-          workflows/coveragedocs.yml
+          workflows/docs.yml
     repos: |
       Nef10/SwiftBeanCount
 
