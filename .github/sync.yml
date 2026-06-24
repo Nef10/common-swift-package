@@ -100,7 +100,6 @@ group:
       - source: github/workflows/release-drafter.yml
         dest: .github/workflows/release-drafter.yml
     repos: |
-      Nef10/SwiftBeanCountImporterApp
       Nef10/SwiftBeanCountApp
 
   # Other repos just to sync the license
