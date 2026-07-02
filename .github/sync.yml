@@ -1,24 +1,5 @@
 group:
 
-  # Swift packages
-  - files:
-      - source: .gitignore
-        dest: .gitignore
-      - source: .swiftlint.yml
-        dest: .swiftlint.yml
-      - source: LICENSE
-        dest: LICENSE
-      - source: github/
-        dest: .github/
-        deleteOrphaned: true
-        exclude: |
-          minimum_coverage.txt
-          macos_version.txt
-          macos_only
-          copilot-instructions.md
-    repos: |
-      Nef10/FileSelectorView
-
   # SwiftBeanCount excluding CI, coverage comment and docs till unified
   - files:
       - source: .gitignore
