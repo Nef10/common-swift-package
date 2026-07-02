@@ -18,11 +18,6 @@ group:
           copilot-instructions.md
     repos: |
       Nef10/FileSelectorView
-      Nef10/WealthsimpleDownloader
-      Nef10/GoogleAuthentication
-      Nef10/RogersBankDownloader
-      Nef10/TangerineDownloader
-      Nef10/CompassCardDownloader
 
   # SwiftBeanCount excluding CI, coverage comment and docs till unified
   - files:
